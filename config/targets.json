@@ -1,0 +1,27 @@
+{
+  "//": "Each target = one source to scan. 'row' selects each repeated record; 'fields' maps output columns to selectors relative to each row. Run `python -m funnel.explore <url>` first to discover these selectors.",
+
+  "defaults": {
+    "min_delay_sec": 4.0,
+    "max_delay_sec": 9.0,
+    "max_pages": 3,
+    "headless": true,
+    "timeout_ms": 30000
+  },
+
+  "targets": [
+    {
+      "name": "demo_books",
+      "url": "https://books.toscrape.com/catalogue/page-1.html",
+      "enabled": true,
+      "row": "article.product_pod",
+      "fields": {
+        "title": "h3 a @title",
+        "price": ".price_color",
+        "availability": ".availability",
+        "detail_url": "h3 a @href"
+      },
+      "next_page": "li.next a @href"
+    }
+  ]
+}

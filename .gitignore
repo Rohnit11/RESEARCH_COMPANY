@@ -1,0 +1,18 @@
+# Scraped output & artifacts — never commit raw data or session state
+data/
+logs/
+artifacts/
+.pw-profile/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
