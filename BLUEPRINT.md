@@ -96,9 +96,44 @@ news/social tone from Tavily/Claude research briefs. Multi-angle, flagged where 
 Safe randomized timers, realistic browser profile, low volume, respect ToS/robots,
 public + non-personal data only. Prefer official APIs/feeds over fragile scraping.
 
-## 12. Locked decisions (this session)
+## 12. Resilience & fallback (Tavily-independent backups)
+The hard-data **spine** (marketplace velocity, prices, Shopify feeds, YouTube API,
+Google Trends) uses **no Tavily** — a Tavily outage only degrades the enrichment
+layer, never the core. For that enrichment layer, every research call runs an
+**automatic failover waterfall** and terminates in a flag, never a guess:
+
+```
+Tavily → DuckDuckGo (ddgs) + trafilatura extract → direct source scrapers → ⚠️ "insufficient data" (flagged)
+```
+
+**Free, in-code backends per data type:**
+| Need | Primary | Backup (free, no Tavily) |
+|------|---------|--------------------------|
+| Web search | `tavily_search` | `duckduckgo-search` (ddgs), no key |
+| Page extract | `tavily_extract` | `trafilatura` / readability + Playwright |
+| Financials (ROC) | Tavily research | direct scrape Tofler / Zaubacorp / screener.in |
+| Nykaa (listed) | Tavily | screener.in / BSE filings / annual-report PDF |
+| News & sentiment | Tavily | GDELT API (free) + RSS (`feedparser`) → VADER local sentiment |
+| Google Trends | `pytrends` | (already Tavily-independent) |
+| YouTube | YouTube Data API | (already Tavily-independent) |
+| Instagram counts | Tavily | public-profile fetch (fragile → flagged) |
+
+**Making the free tier last:**
+- **Caching with TTLs by data type** — financials ~30–90d, market size ~90d, news/sentiment ~1d, prices/velocity daily. Slow-changing data isn't re-fetched → ~90% fewer Tavily calls.
+- **Quota-aware failover** — catch Tavily `402/429` → auto-switch to the backup chain, log the event, continue. Never crash, never leave a gap un-flagged.
+- **Sentiment floor** — local `vaderSentiment` over GDELT/RSS headlines + review text is always available offline, so sentiment never fully drops out.
+
+**New deps this introduces (for the build session):** `duckduckgo-search`, `trafilatura`,
+`feedparser`, `vaderSentiment`, `pytrends`, `google-api-python-client` (YouTube).
+
+**Honesty invariant:** the waterfall's terminal state is always a flagged
+"insufficient data" — fallbacks broaden coverage, they never fabricate a value.
+
+## 13. Locked decisions (this session)
 Framework = 4 pillars · Headlines = Market Position + SoV/Momentum · Time = snapshot
 + daily history · Share base = tracked set · Rank = est. sales/GMV · SoV = engagement-led
 · Sales spine = velocity + "bought last month" calibration · SKU coverage = top ~50 ·
 Offline = triangulate (flagged) · Acquisition = hybrid · Sentiment = blended · Research
-tool = Tavily (connected).
+tool = Tavily (connected) · Failover = automatic waterfall (Tavily → DDG+trafilatura →
+source scrapers → flag) · Caching = TTL by data type · Sentiment backup = local VADER +
+GDELT/RSS.
