@@ -1,0 +1,48 @@
+{
+  "//": "Swiss Beauty competitive set. 'd2c' domains are best-guess and must be confirmed by the Stage-1 Explore/verify pass (verified:false). Social handles are filled during explore. Marketplace URLs are built from platform search templates + the brand's search_term.",
+
+  "project": {
+    "target": "Swiss Beauty",
+    "geography": "India (pan-India)",
+    "category": "color cosmetics / makeup",
+    "cadence": "daily"
+  },
+
+  "brands": [
+    { "name": "Swiss Beauty",     "role": "target",     "tier": "mass",             "search_term": "Swiss Beauty",     "d2c": "https://www.swissbeauty.in",        "verified": false },
+    { "name": "Nykaa Cosmetics",  "role": "competitor", "tier": "masstige-bigger",  "search_term": "Nykaa Cosmetics",  "d2c": "https://www.nykaa.com",             "verified": false },
+    { "name": "Sugar Cosmetics",  "role": "competitor", "tier": "masstige-bigger",  "search_term": "Sugar Cosmetics",  "d2c": "https://www.sugarcosmetics.com",    "verified": false },
+    { "name": "Mars Cosmetics",   "role": "competitor", "tier": "mass-direct",      "search_term": "MARS Cosmetics",   "d2c": "https://www.marscosmetics.in",      "verified": false },
+    { "name": "Lakme",            "role": "competitor", "tier": "incumbent-bigger", "search_term": "Lakme",            "d2c": "https://www.lakmeindia.com",        "verified": false },
+    { "name": "Maybelline India", "role": "competitor", "tier": "mnc-bigger",       "search_term": "Maybelline",       "d2c": "https://www.maybelline.co.in",      "verified": false },
+    { "name": "Colorbar",         "role": "competitor", "tier": "masstige",         "search_term": "Colorbar",         "d2c": "https://www.colorbarcosmetics.com", "verified": false },
+    { "name": "MyGlamm",          "role": "competitor", "tier": "masstige-funded",  "search_term": "MyGlamm",          "d2c": "https://www.myglamm.com",           "verified": false },
+    { "name": "Renee Cosmetics",  "role": "competitor", "tier": "growing",          "search_term": "Renee Cosmetics",  "d2c": "https://www.reneecosmetics.in",     "verified": false },
+    { "name": "Insight Cosmetics","role": "competitor", "tier": "mass-direct",      "search_term": "Insight Cosmetics","d2c": "https://www.insightcosmetics.in",   "verified": false },
+    { "name": "Blue Heaven",      "role": "competitor", "tier": "mass-direct",      "search_term": "Blue Heaven",      "d2c": "https://www.blueheaven.in",         "verified": false },
+    { "name": "Elle18",           "role": "competitor", "tier": "budget",           "search_term": "Elle18",           "d2c": "https://www.elle18.co.in",          "verified": false },
+    { "name": "Wet n Wild India", "role": "competitor", "tier": "mass",             "search_term": "Wet n Wild",       "d2c": null,                                "verified": false },
+    { "name": "PAC Cosmetics",    "role": "competitor", "tier": "masstige",         "search_term": "PAC Cosmetics",    "d2c": "https://www.paccosmetic.com",       "verified": false },
+    { "name": "Faces Canada",     "role": "competitor", "tier": "masstige",         "search_term": "Faces Canada",     "d2c": "https://www.facescanada.com",       "verified": false },
+    { "name": "Kay Beauty",       "role": "competitor", "tier": "premium-growing",  "search_term": "Kay Beauty",       "d2c": null,                                "verified": false }
+  ],
+
+  "ecommerce_platforms": [
+    { "name": "brand_d2c",  "type": "d2c",       "search_url": null },
+    { "name": "amazon_in",  "type": "marketplace","search_url": "https://www.amazon.in/s?k={q}" },
+    { "name": "flipkart",   "type": "marketplace","search_url": "https://www.flipkart.com/search?q={q}" },
+    { "name": "nykaa",      "type": "beauty",    "search_url": "https://www.nykaa.com/search/result/?q={q}" },
+    { "name": "purplle",    "type": "beauty",    "search_url": "https://www.purplle.com/search?q={q}" },
+    { "name": "myntra",     "type": "fashion",   "search_url": "https://www.myntra.com/{q}" },
+    { "name": "tira",       "type": "beauty",    "search_url": "https://www.tirabeauty.com/search?q={q}" }
+  ],
+
+  "social_platforms": ["instagram", "youtube", "google_trends", "x_twitter"],
+
+  "signals_to_capture": {
+    "pricing_product": ["price", "mrp", "discount", "product_count", "new_launches", "shade_count"],
+    "sales_proxies":   ["rating", "rating_count", "review_count", "bestseller_rank", "bought_last_month", "in_stock_pct"],
+    "social_buzz":     ["followers", "posts", "avg_engagement", "hashtag_volume", "yt_views", "google_trends_index"],
+    "financial":       ["roc_revenue", "roc_profit", "funding_total", "last_round", "valuation"]
+  }
+}
