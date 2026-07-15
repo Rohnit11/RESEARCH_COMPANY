@@ -9,9 +9,9 @@
   },
 
   "brands": [
-    { "name": "Swiss Beauty",     "role": "target",     "tier": "mass",             "search_term": "Swiss Beauty",     "d2c": "https://www.swissbeauty.in",        "verified": false },
-    { "name": "Nykaa Cosmetics",  "role": "competitor", "tier": "masstige-bigger",  "search_term": "Nykaa Cosmetics",  "d2c": "https://www.nykaa.com",             "verified": false },
-    { "name": "Sugar Cosmetics",  "role": "competitor", "tier": "masstige-bigger",  "search_term": "Sugar Cosmetics",  "d2c": "https://www.sugarcosmetics.com",    "verified": false },
+    { "name": "Swiss Beauty",     "role": "target",     "tier": "mass",             "search_term": "Swiss Beauty",     "d2c": "https://swissbeauty.in",            "storefront": "shopify", "instagram": "officialswissbeauty", "verified": true },
+    { "name": "Nykaa Cosmetics",  "role": "competitor", "tier": "masstige-bigger",  "search_term": "Nykaa Cosmetics",  "d2c": "https://www.nykaa.com",             "d2c_note": "in-house brand sold within nykaa.com; exact brand-page path to confirm on explore", "instagram": "nykaacosmetics", "verified": true },
+    { "name": "Sugar Cosmetics",  "role": "competitor", "tier": "masstige-bigger",  "search_term": "Sugar Cosmetics",  "d2c": "https://www.sugarcosmetics.com",    "storefront": "shopify", "instagram": "trysugar", "verified": true },
     { "name": "Mars Cosmetics",   "role": "competitor", "tier": "mass-direct",      "search_term": "MARS Cosmetics",   "d2c": "https://www.marscosmetics.in",      "verified": false },
     { "name": "Lakme",            "role": "competitor", "tier": "incumbent-bigger", "search_term": "Lakme",            "d2c": "https://www.lakmeindia.com",        "verified": false },
     { "name": "Maybelline India", "role": "competitor", "tier": "mnc-bigger",       "search_term": "Maybelline",       "d2c": "https://www.maybelline.co.in",      "verified": false },
